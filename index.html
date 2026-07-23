@@ -24,40 +24,106 @@
 
   /* ===== HOME ===== */
   #home {
-    justify-content: center;
-    align-items: center;
-    padding: 5vw;
-    gap: 4vh;
-  }
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 22px 32px;
+  gap: 0;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-logo {
+  width: 100%;
+  margin-top: 360px;
+  margin-bottom: 38px;
+  font-size: clamp(38px, 11.5vw, 72px);
+  font-weight: 300;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 0.95;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.home-logo span {
+  color: #e00000;
+}
+
+.home-subtitle {
+  font-size: 22px;
+  color: #b5b5b5;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.45;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.home-subtitle::before {
+  content: "10 великих запитань";
+  display: block;
+  color: #e00000;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  margin-bottom: 10px;
+}
+
+.home-subtitle span {
+  color: inherit;
+}
+
+.btn-start {
+  background: #e00000;
+  color: #fff;
+  border: none;
+  padding: 25px 28px;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 7px;
+  cursor: pointer;
+  width: 100%;
+  max-width: none;
+  text-transform: uppercase;
+  border-radius: 0;
+  margin-top: auto;
+  margin-bottom: 110px;
+}
+
+.btn-start:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 390px) {
   .home-logo {
-    font-size: clamp(44px, 20vw, 100px);
-    font-weight: 100;
-    letter-spacing: 2px;
-    text-align: center;
-    line-height: 1;
-    width: 100%;
+    margin-top: 355px;
+    font-size: clamp(34px, 10.5vw, 62px);
   }
-  .home-logo span { color: #cc0000; }
+
   .home-subtitle {
-    font-size: clamp(13px, 3.5vw, 18px);
-    color: #aaa;
-    text-align: center;
-    font-weight: 300;
+    font-size: 20px;
   }
-  .home-subtitle span { color: #cc0000; }
+
+  .home-subtitle::before {
+    font-size: 18px;
+  }
+
   .btn-start {
-    background: #cc0000;
-    color: #fff;
-    border: none;
-    padding: clamp(14px, 3vh, 22px) 40px;
-    font-size: clamp(16px, 4vw, 22px);
-    font-weight: 400;
-    letter-spacing: 3px;
-    cursor: pointer;
-    width: 100%;
-    max-width: 340px;
-    text-transform: uppercase;
+    margin-bottom: 100px;
   }
+}
+
+@media (max-height: 760px) {
+  .home-logo {
+    margin-top: 320px;
+    margin-bottom: 34px;
+  }
+
+  .btn-start {
+    margin-bottom: 86px;
+  }
+}
 
   /* ===== QUESTION SCREEN ===== */
   #question-screen {
