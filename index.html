@@ -352,7 +352,7 @@
 
 <!-- RESULT -->
 <div id="result-screen" class="screen">
-  <div class="result-logo">ТЕО<span>ТЕСТ</span></div>
+  <div class="result-logo">СВІТО<span>ГЛЯД</span></div>
   <div class="result-emoji" id="resultEmoji"></div>
   <div class="result-title" id="resultTitle"></div>
   <div class="result-desc" id="resultDesc"></div>
@@ -701,15 +701,29 @@ function renderCurrent() {
 function nextQuestion() {
   saveCurrentAnswer();
 
+  var currentAnswer = phase === "common" ? commonAnswers[commonIdx] : branchAnswers[branchIdx];
+
+  if (!currentAnswer || !currentAnswer.value) {
+    alert("Будь ласка, оберіть відповідь перед тим, як перейти далі.");
+    return;
+  }
+
+  if (currentAnswer.value === "__custom__" && (!currentAnswer.custom || currentAnswer.custom.trim() === "")) {
+    alert("Будь ласка, впишіть свій варіант відповіді.");
+    return;
+  }
+
   if (phase === "common") {
     if (commonIdx === 0) {
       commonIdx = 1;
       renderCurrent();
       return;
     }
+
     if (commonIdx === 1) {
       var ans2 = commonAnswers[1];
       var val = ans2 ? ans2.value : "";
+
       if (val === "Так, це Бог") {
         phase = "theist";
         branchQuestions = questionsTheist;
@@ -717,6 +731,7 @@ function nextQuestion() {
         phase = "skeptic";
         branchQuestions = questionsSkeptic;
       }
+
       branchIdx = 0;
       branchAnswers = new Array(branchQuestions.length).fill(null);
       renderCurrent();
@@ -726,10 +741,12 @@ function nextQuestion() {
 
   if (phase === "theist" || phase === "skeptic") {
     branchIdx++;
+
     if (branchIdx >= branchQuestions.length) {
       showResult();
       return;
     }
+
     renderCurrent();
   }
 }
