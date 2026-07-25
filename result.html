@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Детальний світоглядний профіль</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .page {
+    width: 100%;
+    min-height: 100dvh;
+    padding: 22px 16px 40px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-size: clamp(24px, 7vw, 44px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .logo span {
+    color: #cc0000;
+  }
+
+  .kicker {
+    color: #cc0000;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: clamp(31px, 9vw, 58px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  .intro {
+    color: #ddd;
+    font-size: clamp(16px, 4vw, 20px);
+    font-weight: 300;
+    line-height: 1.55;
+    text-align: center;
+    max-width: 660px;
+    margin: 0 auto 18px;
+  }
+
+  .note {
+    color: #888;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 26px;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    padding: 13px 0;
+  }
+
+  .section {
+    background: #070707;
+    border: 1px solid #222;
+    padding: 18px 15px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    color: #cc0000;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .section p {
+    color: #d5d5d5;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  .section p:last-child {
+    margin-bottom: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    color: #d5d5d5;
+    font-size: 16px;
+    line-height: 1.55;
+    font-weight: 300;
+    margin-bottom: 9px;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #cc0000;
+    position: absolute;
+    left: 0;
+    top: 9px;
+  }
+
+  .question-box {
+    border: 1px solid #cc0000;
+    background: #090000;
+  }
+
+  .question-text {
+    font-size: clamp(20px, 5vw, 28px);
+    line-height: 1.35;
+    font-weight: 300;
+    color: #fff;
+  }
+
+  .map-title {
+    color: #cc0000;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin: 26px 0 8px;
+  }
+
+  .map-subtitle {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.45;
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto 14px;
+  }
+
+  .profile-map-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+    margin-bottom: 18px;
+  }
+
+  .profile-map-card {
+    min-height: 86px;
+    background: #090909;
+    border: 1px solid #252525;
+    padding: 10px 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .profile-map-card.active {
+    border-color: #cc0000;
+    background: linear-gradient(135deg, #170000, #080808);
+    box-shadow: 0 0 0 1px rgba(204,0,0,0.35), 0 0 18px rgba(204,0,0,0.2);
+  }
+
+  .profile-map-card.active::after {
+    content: "ТИ ТУТ";
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    background: #cc0000;
+    color: #fff;
+    font-size: 8px;
+    letter-spacing: 1px;
+    padding: 3px 5px;
+    font-weight: 700;
+  }
+
+  .profile-map-name {
+    font-size: clamp(10px, 2.8vw, 13px);
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    padding-right: 34px;
+  }
+
+  .profile-map-count {
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .profile-map-bar {
+    height: 3px;
+    background: #222;
+    margin-top: 7px;
+    overflow: hidden;
+  }
+
+  .profile-map-bar span {
+    display: block;
+    height: 100%;
+    background: #cc0000;
+  }
+
+  .invite {
+    background: #080000;
+    border: 1px solid #cc0000;
+    padding: 22px 16px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .invite-title {
+    color: #cc0000;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .invite-main {
+    font-size: clamp(22px, 6vw, 34px);
+    line-height: 1.2;
+    font-weight: 300;
+    margin-bottom: 14px;
+  }
+
+  .invite-text {
+    color: #d5d5d5;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 300;
+    max-width: 620px;
+    margin: 0 auto 16px;
+  }
+
+  .invite-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .invite-card {
+    background: #050505;
+    border: 1px solid #262626;
+    padding: 15px 12px;
+    text-align: left;
+  }
+
+  .invite-card-title {
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .invite-card-text {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .button-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    padding: 16px 12px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .btn-primary {
+    background: #cc0000;
+  }
+
+  .btn-secondary {
+    background: #111;
+    border: 1px solid #333;
+  }
+
+  .small-muted {
+    color: #777;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .error-box {
+    border: 1px solid #cc0000;
+    background: #090000;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .error-title {
+    color: #cc0000;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .error-text {
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 700px) {
+    .page {
+      padding-top: 34px;
+    }
+
+    .profile-map-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .invite-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .button-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .profile-map-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="container" id="app"></div>
+</div>
+
+<script>
+  var churchInfo = {
+    name: "вашої церкви",
+    website: "https://example.com",
+    serviceTime: "щонеділі",
+    serviceAddress: "адресу можна уточнити на сайті або у ведучого",
+    contactLink: "https://example.com"
+  };
+
+  var profiles = {
+    "christian": {
+      title: "ХРИСТИЯНСЬКИЙ ТЕЇСТ",
+      shortTitle: "Християнський теїзм",
+      intro: "Твої відповіді найближчі до християнського теїзму: віри в особистого Бога, Який відкрився через Ісуса Христа.",
+      description: [
+        "Ти бачиш світ не як випадковість і не як замкнену систему, а як творіння особистого Бога. Для тебе віра — це не лише ідея про Бога, а довіра до Нього, Його характеру і Його дії в історії.",
+        "У центрі християнського теїзму стоїть Ісус Христос: не просто моральний учитель, а Той, через Кого Бог відкриває Себе, спасає людину і повертає їй справжній сенс."
+      ],
+      strengths: [
+        "Ти маєш цілісну картину світу, де Бог, мораль, сенс і надія пов'язані між собою.",
+        "Ти можеш пояснювати гідність людини не лише емоціями, а тим, що людина створена за образом Божим.",
+        "Ти маєш основу для надії, яка не залежить лише від обставин."
+      ],
+      blindSpot: "Навіть правильна віра може стати формальною, якщо перетворюється лише на звичку, традицію або набір правильних відповідей без живих стосунків з Богом.",
+      question: "Як твоя віра в Христа впливає на твої щоденні рішення, стосунки і ставлення до людей, які думають інакше?",
+      christianBridge: "Християнський теїзм запрошує не лише знати правильні відповіді, а жити в довірі до Бога, в покаянні, любові та місії.",
+      nearest: ["Теїзм", "Деїзм", "Гуманізм"]
+    },
+
+    "theist": {
+      title: "ТЕЇСТ",
+      shortTitle: "Теїзм",
+      intro: "Твої відповіді найближчі до теїзму: віри в особистого Бога, Який є вищим за світ і може мати стосунок до людини.",
+      description: [
+        "Ти схильний або схильна бачити за світом особистого Бога, а не просто випадок, енергію чи безособовий закон. Для тебе ідея Бога може бути пов'язана з порядком, мораллю, сенсом і відповідальністю.",
+        "Водночас твої відповіді ще не обов'язково вказують на чітке християнське розуміння Бога через Ісуса Христа."
+      ],
+      strengths: [
+        "Ти відкритий або відкрита до думки, що світ має особисте джерело.",
+        "Ти можеш бачити мораль і сенс як щось більше, ніж людські домовленості.",
+        "Ти, ймовірно, не зводиш людину лише до біології чи випадковості."
+      ],
+      blindSpot: "Загальна віра в Бога може залишатися дуже розмитою. Можна вірити, що Бог є, але не шукати, Яким Він є і чи відкрив Себе людям.",
+      question: "Якщо Бог справді особистий, що могло би переконати тебе шукати не просто ідею Бога, а Самого Бога?",
+      christianBridge: "Християнський теїзм стверджує, що Бог не залишився далеким і невідомим. Він відкрив Себе в історії Ізраїлю і найповніше — в Ісусі Христі.",
+      nearest: ["Християнський теїзм", "Деїзм", "Гуманізм"]
+    },
+
+    "deist": {
+      title: "ДЕЇСТ",
+      shortTitle: "Деїзм",
+      intro: "Твої відповіді близькі до деїзму: віри в Бога-Творця, Який створив світ, але здається далеким або не втручається в щоденне життя.",
+      description: [
+        "Ти можеш визнавати, що світ має Творця або першопричину. Але цей Бог у твоєму уявленні радше далекий: Він запустив світ, встановив закони, але не обов'язково близький до людини.",
+        "Такий погляд часто виникає тоді, коли людина бачить порядок у світі, але не впевнена, що Бог говорить, діє або особисто цікавиться нами."
+      ],
+      strengths: [
+        "Ти не зводиш Всесвіт лише до випадку.",
+        "Ти відкритий або відкрита до раціональної ідеї Творця.",
+        "Ти можеш бачити світ як упорядкований і осмислений."
+      ],
+      blindSpot: "Якщо Бог лише далекий Архітектор, тоді важко пояснити молитву, любов, одкровення, особисту відповідальність і надію на примирення з Ним.",
+      question: "Що могло би змінитися у твоєму житті, якби Творець був не далеким, а особистим і близьким?",
+      christianBridge: "Християнський теїзм погоджується, що Бог є Творцем. Але він іде далі: Бог не лише створив світ, а й увійшов в історію, говорить до людини і відкриває Себе через Ісуса Христа.",
+      nearest: ["Теїзм", "Християнський теїзм", "Агностицизм"]
+    },
+
+    "pantheist": {
+      title: "ПАНТЕЇСТИЧНИЙ ПРОФІЛЬ",
+      shortTitle: "Пантеїстичний",
+      intro: "Твої відповіді близькі до погляду, що Божественне тісно пов'язане зі світом: присутнє в усьому або ототожнюється з Всесвітом.",
+      description: [
+        "Ти можеш відчувати, що реальність глибша, ніж просто матерія. Для тебе Божественне може бути пов'язане з природою, енергією, Всесвітом або внутрішнім духовним досвідом.",
+        "Такий погляд часто підкреслює єдність усього, красу природи і духовний вимір життя."
+      ],
+      strengths: [
+        "Ти не закриваєшся від духовного виміру реальності.",
+        "Ти можеш уважно ставитися до краси, таємниці і взаємопов'язаності світу.",
+        "Ти не зводиш життя лише до сухого матеріалізму."
+      ],
+      blindSpot: "Якщо Бог і світ — це фактично одне й те саме, тоді стає складно говорити про особистого Бога, добро і зло, молитву, прощення і справжні стосунки з Творцем.",
+      question: "Якщо Бог — не просто енергія у всьому, а Особистість, чи хотів би ти Його знати?",
+      christianBridge: "Християнський теїзм стверджує, що Бог присутній у світі, але не є тотожним світові. Він близький, але водночас більший за творіння. Він не просто сила, а Особистість, Яка може любити, говорити і спасати.",
+      nearest: ["Теїзм", "Деїзм", "Агностицизм"]
+    },
+
+    "relativist": {
+      title: "РЕЛЯТИВІСТ",
+      shortTitle: "Релятивізм",
+      intro: "Твої відповіді близькі до релятивізму: погляду, що істина або мораль значною мірою залежать від людини, культури чи обставин.",
+      description: [
+        "Ти можеш насторожено ставитися до абсолютних тверджень. Можливо, тобі здається, що різні люди мають різні правди, а мораль залежить від культури, виховання або ситуації.",
+        "Такий погляд часто виникає з бажання не засуджувати інших і бути відкритим до різних досвідів."
+      ],
+      strengths: [
+        "Ти не поспішаєш нав'язувати свою думку іншим.",
+        "Ти можеш бути чутливим або чутливою до культурних відмінностей.",
+        "Ти, ймовірно, цінуєш діалог і не любиш грубого фанатизму."
+      ],
+      blindSpot: "Якщо все відносне, тоді важко сказати, що несправедливість, насильство або брехня справді є злом, а не просто чиєюсь думкою.",
+      question: "Чи є речі, які залишаються злом, навіть якщо суспільство колись назвало би їх нормальними?",
+      christianBridge: "Християнський теїзм стверджує, що добро і зло мають основу не в настроях суспільства, а в характері Бога. Саме тому людська гідність і справедливість можуть мати справжню, а не лише умовну вагу.",
+      nearest: ["Гуманізм", "Агностицизм", "Натуралізм"]
+    },
+
+    "nihilist": {
+      title: "НІГІЛІСТ",
+      shortTitle: "Нігілізм",
+      intro: "Твої відповіді близькі до нігілізму: погляду, що об'єктивного сенсу, мети або моральної основи не існує.",
+      description: [
+        "Ти можеш дивитися на світ дуже тверезо і без прикрас. Можливо, тобі здається, що люди самі вигадують сенс, а Всесвіт у своїй основі байдужий до нас.",
+        "Іноді така позиція є не просто філософією, а реакцією на розчарування, біль або досвід несправедливості."
+      ],
+      strengths: [
+        "Ти не любиш дешевих відповідей.",
+        "Ти можеш чесно дивитися на темні сторони життя.",
+        "Ти не хочеш вдавати, що все добре, якщо всередині є серйозні питання."
+      ],
+      blindSpot: "Нігілізм може здаватися чесним, але він важко пояснює, чому ми все одно прагнемо любові, справедливості, краси, значення і надії.",
+      question: "Якщо справжній сенс існує, чи був би ти готовий або готова його шукати?",
+      christianBridge: "Християнський теїзм не заперечує темряву світу. Але він стверджує, що останнє слово належить не хаосу, смерті чи абсурду, а Богові, Який створив людину для життя, любові і вічності.",
+      nearest: ["Атеїзм", "Агностицизм", "Натуралізм"]
+    },
+
+    "naturalist": {
+      title: "НАТУРАЛІСТ",
+      shortTitle: "Натуралізм",
+      intro: "Твої відповіді близькі до натуралізму: погляду, що світ найкраще пояснюється природними законами без звернення до надприродного.",
+      description: [
+        "Ти схильний або схильна шукати пояснення через науку, природу, причинність і спостереження. Для тебе важливо не приймати твердження без підстав.",
+        "Натуралістичний погляд часто цінує раціональність, докази і обережність щодо надприродних пояснень."
+      ],
+      strengths: [
+        "Ти цінуєш мислення, докази і послідовність.",
+        "Ти не хочеш вірити сліпо.",
+        "Ти серйозно ставишся до питань походження, законів природи і реальності."
+      ],
+      blindSpot: "Природні закони добре описують, як працює світ, але не завжди відповідають на питання, чому взагалі існують світ, закони, свідомість, мораль і сенс.",
+      question: "Чи може наука пояснити не лише механізм світу, а й причину, чому світ взагалі існує?",
+      christianBridge: "Християнський теїзм не вимагає відкидати науку. Він стверджує, що природні закони можуть бути не заміною Творця, а способом описати впорядкованість Його творіння.",
+      nearest: ["Атеїзм", "Агностицизм", "Гуманізм"]
+    },
+
+    "humanist": {
+      title: "ГУМАНІСТ",
+      shortTitle: "Гуманізм",
+      intro: "Твої відповіді близькі до гуманізму: погляду, який підкреслює гідність людини, співчуття, справедливість і людську відповідальність.",
+      description: [
+        "Для тебе людина має велику цінність. Тобі можуть бути важливі доброта, права людини, свобода, справедливість, допомога слабким і відповідальне життя.",
+        "Гуманізм часто народжується з щирого бажання зробити світ кращим і ставитися до людей з повагою."
+      ],
+      strengths: [
+        "Ти серйозно ставишся до людської гідності.",
+        "Ти цінуєш співчуття, справедливість і відповідальність.",
+        "Ти, ймовірно, не байдужий або не байдужа до болю інших людей."
+      ],
+      blindSpot: "Гуманізм сильно говорить про цінність людини, але не завжди може пояснити, чому ця цінність є об'єктивною, незмінною і не залежить від користі, сили чи думки більшості.",
+      question: "На чому тримається гідність людини, якщо людина — лише продукт випадкових процесів?",
+      christianBridge: "Християнський теїзм погоджується, що людина має величезну цінність. Але пояснює її тим, що кожна людина створена за образом Божим. Тому гідність людини не залежить від віку, здоров'я, статусу, сили чи популярності.",
+      nearest: ["Теїзм", "Релятивізм", "Агностицизм"]
+    },
+
+    "atheist": {
+      title: "АТЕЇСТ",
+      shortTitle: "Атеїзм",
+      intro: "Твої відповіді близькі до атеїзму: позиції, що немає достатніх підстав вірити в існування Бога.",
+      description: [
+        "Ти, ймовірно, не бачиш достатніх причин вірити в Бога або вважаєш, що світ можна пояснити без Нього. Можливо, для тебе важливі докази, логіка і чесність перед фактами.",
+        "Атеїзм може бути не просто запереченням Бога, а способом будувати життя без релігійних пояснень."
+      ],
+      strengths: [
+        "Ти не хочеш приймати твердження без підстав.",
+        "Ти можеш серйозно ставитися до логіки, доказів і послідовності.",
+        "Ти, ймовірно, не любиш маніпуляцій релігійною мовою."
+      ],
+      blindSpot: "Атеїзм може ставити сильні питання до віри, але сам також має відповідати на питання про походження Всесвіту, мораль, свідомість, сенс і гідність людини.",
+      question: "Який доказ або досвід міг би змусити тебе хоча б серйозно переглянути питання Бога?",
+      christianBridge: "Християнський теїзм не просить вимкнути розум. Він пропонує розглянути, чи можуть існування світу, морального закону, свідомості, історії Ісуса і людської спраги сенсу краще пояснюватися Богом, ніж Його відсутністю.",
+      nearest: ["Натуралізм", "Агностицизм", "Нігілізм"]
+    },
+
+    "agnostic": {
+      title: "АГНОСТИК",
+      shortTitle: "Агностицизм",
+      intro: "Твої відповіді близькі до агностицизму: позиції, що питання існування Бога залишається відкритим або невизначеним.",
+      description: [
+        "Ти не відкидаєш духовні питання, але й не хочеш приймати готові відповіді просто тому, що так кажуть.",
+        "Схоже, для тебе важливо залишатися чесним або чесною перед собою. Ти можеш сказати: я не знаю — і це для тебе краще, ніж удавати впевненість."
+      ],
+      strengths: [
+        "Ти не боїшся сказати: я не знаю.",
+        "Ти не хочеш вірити сліпо.",
+        "Ти можеш бути відкритим або відкритою до розмови, якщо вона чесна."
+      ],
+      blindSpot: "Іноді фраза я не знаю може бути не лише чесністю, а й способом відкласти рішення на потім. Не кожне питання можна відкладати безкінечно.",
+      question: "Якщо відповідь існує, що могло би переконати тебе шукати її серйозніше?",
+      christianBridge: "Християнський теїзм стверджує, що Бог не залишив людину в темряві. Він відкривається через створений світ, совість, історію і найповніше — через Ісуса Христа. Питання не лише в тому, чи ми можемо щось знати про Бога, а й у тому, чи готові ми шукати.",
+      nearest: ["Теїзм", "Гуманізм", "Натуралізм"]
+    },
+
+    "polytheist": {
+      title: "ПОЛІТЕЇСТ",
+      shortTitle: "Політеїзм",
+      intro: "Твої відповіді близькі до політеїзму: віри в багатьох богів, духовних істот або вищих сил.",
+      description: [
+        "Ти можеш бути відкритим або відкритою до духовної реальності, але не обов'язково бачиш її як віру в одного особистого Бога-Творця.",
+        "Для тебе духовний світ може виглядати багатошаровим: різні сили, істоти, божества, енергії або духовні впливи."
+      ],
+      strengths: [
+        "Ти не закриваєшся від духовного виміру реальності.",
+        "Ти визнаєш, що світ може бути більшим, ніж лише матеріальне.",
+        "Ти можеш серйозно ставитися до духовного досвіду."
+      ],
+      blindSpot: "Якщо існує багато духовних сил, виникає питання: чи є над ними єдине джерело, вища влада і остаточна істина?",
+      question: "Чи можливо, що за всією духовною реальністю стоїть не багато богів, а один Творець?",
+      christianBridge: "Християнський теїзм визнає реальність духовного світу, але стверджує, що над усім стоїть один Бог-Творець. Він не просто сильніший за інших, а є джерелом усього існуючого.",
+      nearest: ["Пантеїстичний", "Теїзм", "Агностицизм"]
+    },
+
+    "apatheist": {
+      title: "АПАТЕЇСТ",
+      shortTitle: "Апатеїзм",
+      intro: "Твої відповіді близькі до апатеїзму: позиції, коли питання про Бога не заперечується обов'язково, але не є важливим для життя.",
+      description: [
+        "Можливо, питання про Бога здається тобі далеким, неактуальним або просто нецікавим. Ти можеш думати: навіть якщо Бог є, яке це має значення для мого життя сьогодні?",
+        "Апатеїзм часто не є агресивним запереченням. Це радше байдужість або втома від великих питань."
+      ],
+      strengths: [
+        "Ти, можливо, не хочеш удавати духовність, якщо її не відчуваєш.",
+        "Ти можеш бути практичною людиною, яка не любить абстрактних суперечок.",
+        "Ти не обов'язково вороже ставишся до віри, просто не бачиш її актуальності."
+      ],
+      blindSpot: "Найважливіші питання не перестають бути важливими лише тому, що ми ними не займаємося. Сенс, смерть, провина, любов, справедливість і надія все одно торкаються кожного.",
+      question: "Якщо Бог існує і справді має стосунок до твого життя, чи було б чесно просто не цікавитися цим?",
+      christianBridge: "Християнський теїзм стверджує, що Бог не є абстрактною темою для релігійних людей. Якщо Бог є Творцем, тоді питання про Нього стосується нашої особистості, майбутнього, провини, надії і сенсу життя.",
+      nearest: ["Агностицизм", "Атеїзм", "Натуралізм"]
+    }
+  };
+
+  var profileOrder = [
+    "atheist",
+    "agnostic",
+    "apatheist",
+    "nihilist",
+    "naturalist",
+    "humanist",
+    "relativist",
+    "pantheist",
+    "polytheist",
+    "deist",
+    "theist",
+    "christian"
+  ];
+
+  var demoStats = {
+    "atheist": 8,
+    "agnostic": 14,
+    "apatheist": 6,
+    "nihilist": 3,
+    "naturalist": 9,
+    "humanist": 16,
+    "relativist": 7,
+    "pantheist": 10,
+    "polytheist": 2,
+    "deist": 8,
+    "theist": 9,
+    "christian": 5
+  };
+
+  function getProfileFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var profile = params.get("profile");
+    if (!profile) return "";
+    return profile.toLowerCase();
+  }
+
+  function renderList(items) {
+    var html = "<ul>";
+    for (var i = 0; i < items.length; i++) {
+      html += "<li>" + items[i] + "</li>";
+    }
+    html += "</ul>";
+    return html;
+  }
+
+  function renderParagraphs(items) {
+    var html = "";
+    for (var i = 0; i < items.length; i++) {
+      html += "<p>" + items[i] + "</p>";
+    }
+    return html;
+  }
+
+  function renderProfileMap(activeKey) {
+    var maxCount = 1;
+
+    for (var i = 0; i < profileOrder.length; i++) {
+      var count = demoStats[profileOrder[i]] || 0;
+      if (count > maxCount) maxCount = count;
+    }
+
+    var html = "";
+
+    for (var j = 0; j < profileOrder.length; j++) {
+      var key = profileOrder[j];
+      var p = profiles[key];
+      var countVal = demoStats[key] || 0;
+      var percentWidth = Math.round((countVal / maxCount) * 100);
+      var activeClass = key === activeKey ? " active" : "";
+
+      html +=
+        "<div class=\"profile-map-card" + activeClass + "\">" +
+          "<div class=\"profile-map-name\">" + p.shortTitle + "</div>" +
+          "<div>" +
+            "<div class=\"profile-map-count\">" + countVal + " людей</div>" +
+            "<div class=\"profile-map-bar\"><span style=\"width:" + percentWidth + "%\"></span></div>" +
+          "</div>" +
+        "</div>";
+    }
+
+    return html;
+  }
+
+  function getPercent(profileKey) {
+    var total = 0;
+    for (var i = 0; i < profileOrder.length; i++) {
+      total += demoStats[profileOrder[i]] || 0;
+    }
+
+    var countVal = demoStats[profileKey] || 0;
+    if (total <= 0) return 0;
+    return Math.round((countVal / total) * 100);
+  }
+
+  function renderError() {
+    var app = document.getElementById("app");
+
+    app.innerHTML =
+      "<div class=\"logo\">СВІТО<span>ГЛЯД</span></div>" +
+      "<div class=\"error-box\">" +
+        "<div class=\"error-title\">Профіль не знайдено</div>" +
+        "<div class=\"error-text\">" +
+          "Посилання не містить правильного параметра профілю. Спробуйте пройти тест ще раз." +
+        "</div>" +
+        "<div class=\"button-row\">" +
+          "<a class=\"btn btn-primary\" href=\"index.html\">Пройти тест</a>" +
+        "</div>" +
+      "</div>";
+  }
+
+  function renderPage() {
+    var profileKey = getProfileFromUrl();
+
+    if (!profiles[profileKey]) {
+      renderError();
+      return;
+    }
+
+    var p = profiles[profileKey];
+    var percent = getPercent(profileKey);
+    var app = document.getElementById("app");
+
+    app.innerHTML =
+      "<div class=\"logo\">СВІТО<span>ГЛЯД</span></div>" +
+
+      "<div class=\"kicker\">Твій світоглядний профіль</div>" +
+      "<h1 class=\"title\">" + p.title + "</h1>" +
+      "<div class=\"intro\">" + p.intro + "</div>" +
+
+      "<div class=\"note\">" +
+        "Це не ярлик і не оцінка. Це приблизний світоглядний знімок на основі твоїх відповідей." +
+      "</div>" +
+
+      "<div class=\"section\">" +
+        "<div class=\"section-title\">Коротко про твій профіль</div>" +
+        renderParagraphs(p.description) +
+      "</div>" +
+
+      "<div class=\"section\">" +
+        "<div class=\"section-title\">Твої сильні сторони</div>" +
+        renderList(p.strengths) +
+      "</div>" +
+
+      "<div class=\"section\">" +
+        "<div class=\"section-title\">Можлива сліпа зона</div>" +
+        "<p>" + p.blindSpot + "</p>" +
+      "</div>" +
+
+      "<div class=\"section question-box\">" +
+        "<div class=\"section-title\">Питання для тебе</div>" +
+        "<div class=\"question-text\">" + p.question + "</div>" +
+      "</div>" +
+
+      "<div class=\"section\">" +
+        "<div class=\"section-title\">Ти не один / не одна</div>" +
+        "<p>У демо-мапі схожий профіль мають приблизно " + percent + "% учасників.</p>" +
+        "<p>Коли ми підключимо реальну статистику, тут буде показано актуальний відсоток людей, які пройшли тест сьогодні або на конкретній події.</p>" +
+      "</div>" +
+
+      "<div class=\"section\">" +
+        "<div class=\"section-title\">Найближчі профілі</div>" +
+        renderList(p.nearest) +
+      "</div>" +
+
+      "<div class=\"section\">" +
+        "<div class=\"section-title\">Як на це дивиться християнський теїзм</div>" +
+        "<p>" + p.christianBridge + "</p>" +
+      "</div>" +
+
+      "<div class=\"map-title\">Публічна мапа світоглядів</div>" +
+      "<div class=\"map-subtitle\">" +
+        "Кожна картка — один профіль. Твій профіль підсвічений червоною рамкою." +
+      "</div>" +
+      "<div class=\"profile-map-grid\">" +
+        renderProfileMap(profileKey) +
+      "</div>" +
+
+      "<div class=\"invite\">" +
+        "<div class=\"invite-title\">Хочеш продовжити розмову?</div>" +
+        "<div class=\"invite-main\">Великі питання заслуговують чесної розмови</div>" +
+        "<div class=\"invite-text\">" +
+          "Ми запрошуємо тебе не просто отримати результат тесту, а продовжити пошук. Без тиску. Без зобов'язань. Просто чесна розмова про віру, Біблію і життя." +
+        "</div>" +
+
+        "<div class=\"invite-grid\">" +
+          "<div class=\"invite-card\">" +
+            "<div class=\"invite-card-title\">Богослужіння</div>" +
+            "<div class=\"invite-card-text\">" +
+              "Запрошуємо на богослужіння " + churchInfo.serviceTime + ". " + churchInfo.serviceAddress + "." +
+            "</div>" +
+          "</div>" +
+
+          "<div class=\"invite-card\">" +
+            "<div class=\"invite-card-title\">Біблійні основи</div>" +
+            "<div class=\"invite-card-text\">" +
+              "Короткий курс для тих, хто хоче зрозуміти, про що насправді Біблія. Можна пройти в малій групі або 1 на 1." +
+            "</div>" +
+          "</div>" +
+
+          "<div class=\"invite-card\">" +
+            "<div class=\"invite-card-title\">Сайт церкви</div>" +
+            "<div class=\"invite-card-text\">" +
+              "Більше інформації про церкву, зустрічі та можливість поставити питання." +
+            "</div>" +
+          "</div>" +
+        "</div>" +
+
+        "<div class=\"button-row\">" +
+          "<a class=\"btn btn-primary\" href=\"" + churchInfo.website + "\">Сайт церкви</a>" +
+          "<a class=\"btn btn-secondary\" href=\"" + churchInfo.contactLink + "\">Запитати про курс</a>" +
+        "</div>" +
+
+        "<div class=\"small-muted\">" +
+          "Ти можеш просто прийти, написати або поставити питання. Ми будемо раді поговорити." +
+        "</div>" +
+      "</div>" +
+
+      "<div class=\"button-row\">" +
+        "<a class=\"btn btn-secondary\" href=\"index.html\">Пройти тест ще раз</a>" +
+        "<button class=\"btn btn-secondary\" type=\"button\" onclick=\"copyCurrentLink()\">Скопіювати посилання</button>" +
+      "</div>" +
+
+      "<div class=\"small-muted\">" +
+        "Це локальна версія сторінки. У майбутній версії з Google Sheets кожен результат матиме унікальний ID." +
+      "</div>";
+  }
+
+  function copyCurrentLink() {
+    var url = window.location.href;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function() {
+        alert("Посилання скопійовано.");
+      }).catch(function() {
+        alert("Не вдалося скопіювати автоматично. Скопіюйте посилання з адресного рядка браузера.");
+      });
+    } else {
+      alert("Скопіюйте посилання з адресного рядка браузера.");
+    }
+  }
+
+  renderPage();
+</script>
+</body>
+</html>
