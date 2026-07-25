@@ -24,107 +24,77 @@
 
   /* ===== HOME ===== */
   #home {
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 22px 32px;
-  gap: 0;
-  background: #000;
-  position: relative;
-  overflow: hidden;
-}
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 22px 32px;
+    gap: 0;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+  }
 
-.home-logo {
-  width: 100%;
-  margin-top: 160px;
-  margin-bottom: 38px;
-  font-size: clamp(48px, 14vw, 96px);
-  font-weight: 300;
-  letter-spacing: 0;
-  text-align: center;
-  line-height: 0.95;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
-.home-logo span {
-  color: #e00000;
-}
-
-.home-subtitle {
-  font-size: 22px;
-  color: #b5b5b5;
-  text-align: center;
-  font-weight: 500;
-  line-height: 1.45;
-  margin-bottom: 0;
-  position: relative;
-}
-
-.home-subtitle::before {
-  content: "10 великих запитань";
-  display: block;
-  color: #e00000;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-  margin-bottom: 10px;
-}
-
-.home-subtitle span {
-  color: inherit;
-}
-
-.btn-start {
-  background: #e00000;
-  color: #fff;
-  border: none;
-  padding: 25px 28px;
-  font-size: 19px;
-  font-weight: 400;
-  letter-spacing: 7px;
-  cursor: pointer;
-  width: 100%;
-  max-width: none;
-  text-transform: uppercase;
-  border-radius: 0;
-  margin-top: auto;
-  margin-bottom: 110px;
-}
-
-.btn-start:active {
-  transform: scale(0.98);
-}
-/*
-@media (max-width: 390px) {
   .home-logo {
-    margin-top: 355px;
-    font-size: clamp(34px, 10.5vw, 62px);
+    width: 100%;
+    margin-top: 160px;
+    margin-bottom: 38px;
+    font-size: clamp(48px, 14vw, 96px);
+    font-weight: 300;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 0.95;
+    color: #ffffff;
+    white-space: nowrap;
+  }
+
+  .home-logo span {
+    color: #e00000;
   }
 
   .home-subtitle {
-    font-size: 20px;
+    font-size: 22px;
+    color: #b5b5b5;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.45;
+    margin-bottom: 0;
+    position: relative;
   }
 
   .home-subtitle::before {
-    font-size: 18px;
+    content: "10 великих запитань";
+    display: block;
+    color: #e00000;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    margin-bottom: 10px;
+  }
+
+  .home-subtitle span {
+    color: inherit;
   }
 
   .btn-start {
-    margin-bottom: 100px;
+    background: #e00000;
+    color: #fff;
+    border: none;
+    padding: 25px 28px;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: 7px;
+    cursor: pointer;
+    width: 100%;
+    max-width: none;
+    text-transform: uppercase;
+    border-radius: 0;
+    margin-top: auto;
+    margin-bottom: 110px;
   }
-}
 
-@media (max-height: 760px) {
-  .home-logo {
-    margin-top: 320px;
-    margin-bottom: 34px;
+  .btn-start:active {
+    transform: scale(0.98);
   }
 
-  .btn-start {
-    margin-bottom: 86px;
-  }
-}
-*/
   /* ===== QUESTION SCREEN ===== */
   #question-screen {
     justify-content: space-between;
@@ -307,14 +277,264 @@
   .hint-close { position: absolute; top: 10px; right: 12px; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; }
 
   /* ===== RESULT ===== */
-  #result-screen { justify-content: center; align-items: center; padding: 30px 20px; text-align: center; gap: clamp(12px, 3vh, 24px); }
-  .result-logo { font-size: clamp(18px, 5vw, 24px); font-weight: 300; letter-spacing: 2px; }
-  .result-logo span { color: #cc0000; }
-  .result-emoji { font-size: clamp(48px, 15vw, 80px); }
-  .result-title { font-size: clamp(20px, 6vw, 28px); font-weight: 300; letter-spacing: 2px; }
-  .result-desc { font-size: clamp(13px, 3.5vw, 15px); font-weight: 300; color: #aaa; line-height: 1.6; max-width: 300px; }
-  .result-verse { font-size: clamp(13px, 3.5vw, 16px); font-weight: 300; color: #ccc; line-height: 1.6; font-style: italic; max-width: 300px; }
-  .result-ref { color: #cc0000; font-size: clamp(11px, 3vw, 14px); }
+  #result-screen {
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 0;
+    text-align: left;
+    overflow: hidden;
+  }
+
+  .result-scroll {
+    width: 100%;
+    height: 100dvh;
+    overflow-y: auto;
+    padding: 22px 16px 34px;
+  }
+
+  .result-logo {
+    font-size: clamp(18px, 5vw, 24px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  .result-logo span {
+    color: #cc0000;
+  }
+
+  .result-kicker {
+    color: #cc0000;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .result-title {
+    font-size: clamp(28px, 8vw, 46px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .result-desc {
+    font-size: clamp(15px, 4vw, 18px);
+    font-weight: 300;
+    color: #ddd;
+    line-height: 1.55;
+    max-width: 520px;
+    margin: 0 auto 14px;
+    text-align: center;
+  }
+
+  .result-note {
+    color: #888;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto 22px;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    padding: 12px 0;
+  }
+
+  .map-title-small {
+    color: #cc0000;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .map-subtitle-small {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.45;
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto 14px;
+  }
+
+  .profile-map-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+    margin-bottom: 16px;
+  }
+
+  .profile-map-card {
+    min-height: 86px;
+    background: #090909;
+    border: 1px solid #252525;
+    padding: 10px 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .profile-map-card.active {
+    border-color: #cc0000;
+    background: linear-gradient(135deg, #170000, #080808);
+    box-shadow: 0 0 0 1px rgba(204,0,0,0.35), 0 0 18px rgba(204,0,0,0.2);
+  }
+
+  .profile-map-card.active::after {
+    content: "ТИ ТУТ";
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    background: #cc0000;
+    color: #fff;
+    font-size: 8px;
+    letter-spacing: 1px;
+    padding: 3px 5px;
+    font-weight: 700;
+  }
+
+  .profile-map-name {
+    font-size: clamp(10px, 2.8vw, 13px);
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    padding-right: 34px;
+  }
+
+  .profile-map-count {
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .profile-map-bar {
+    height: 3px;
+    background: #222;
+    margin-top: 7px;
+    overflow: hidden;
+  }
+
+  .profile-map-bar span {
+    display: block;
+    height: 100%;
+    background: #cc0000;
+  }
+
+  .you-are-here {
+    border: 1px solid #cc0000;
+    background: #080000;
+    padding: 13px 12px;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.45;
+    margin-bottom: 18px;
+  }
+
+  .final-question-box {
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    padding: 18px 0;
+    margin-bottom: 18px;
+  }
+
+  .final-question-label {
+    color: #cc0000;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .final-question-text {
+    font-size: clamp(19px, 5vw, 27px);
+    font-weight: 300;
+    line-height: 1.3;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .final-question-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .btn-answer-yes,
+  .btn-answer-no {
+    border: none;
+    padding: 15px 8px;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .btn-answer-yes {
+    background: #cc0000;
+  }
+
+  .btn-answer-no {
+    background: #111;
+    border: 1px solid #333;
+  }
+
+  .qr-box {
+    background: #080808;
+    border: 1px solid #222;
+    padding: 18px 14px;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .qr-title {
+    color: #cc0000;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .qr-text {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.45;
+    max-width: 360px;
+    margin: 0 auto 14px;
+  }
+
+  #qrCode {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 12px;
+  }
+
+  #qrCode img,
+  #qrCode canvas {
+    background: #fff;
+    padding: 8px;
+  }
+
+  .profile-link {
+    color: #777;
+    font-size: 11px;
+    line-height: 1.4;
+    word-break: break-all;
+  }
+
   .btn-restart {
     background: #cc0000;
     color: #fff;
@@ -326,6 +546,30 @@
     text-transform: uppercase;
     width: 100%;
     max-width: 300px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 700px) {
+    .result-scroll {
+      max-width: 860px;
+      margin: 0 auto;
+      padding-top: 28px;
+    }
+
+    .profile-map-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 380px) {
+    .profile-map-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .final-question-buttons {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 </head>
@@ -352,23 +596,58 @@
 
 <!-- RESULT -->
 <div id="result-screen" class="screen">
-  <div class="result-logo">СВІТО<span>ГЛЯД</span></div>
-  <div class="result-emoji" id="resultEmoji"></div>
-  <div class="result-title" id="resultTitle"></div>
-  <div class="result-desc" id="resultDesc"></div>
-  <div class="result-verse" id="resultVerse"></div>
-  <div class="result-ref" id="resultRef"></div>
-  <button class="btn-restart" id="btnRestart">ПОЧАТИ ЗНОВУ</button>
+  <div class="result-scroll">
+    <div class="result-logo">СВІТО<span>ГЛЯД</span></div>
+
+    <div class="result-kicker">Світоглядний профіль</div>
+    <div class="result-title" id="resultTitle"></div>
+    <div class="result-desc" id="resultDesc"></div>
+
+    <div class="result-note">
+      Це не ярлик і не оцінка. Це приблизний світоглядний знімок на основі ваших відповідей.
+    </div>
+
+    <div class="map-title-small">Публічна мапа світоглядів</div>
+    <div class="map-subtitle-small">
+      Кожна картка — один профіль. Поки це локальна демо-мапа. Пізніше тут буде реальна статистика учасників.
+    </div>
+
+    <div class="profile-map-grid" id="profileMapGrid"></div>
+
+    <div class="you-are-here" id="youAreHere"></div>
+
+    <div class="final-question-box">
+      <div class="final-question-label">Останнє питання</div>
+      <div class="final-question-text" id="finalQuestionText"></div>
+      <div class="final-question-buttons">
+        <button class="btn-answer-yes" type="button">Так, цікаво</button>
+        <button class="btn-answer-no" type="button">Не зараз</button>
+      </div>
+    </div>
+
+    <div class="qr-box">
+      <div class="qr-title">Зберегти результат</div>
+      <div class="qr-text">
+        Відскануйте QR-код, щоб відкрити детальний профіль на своєму телефоні.
+      </div>
+      <div id="qrCode"></div>
+      <div class="profile-link" id="profileLink"></div>
+    </div>
+
+    <button class="btn-restart" id="btnRestart">ПОЧАТИ ЗНОВУ</button>
+  </div>
 </div>
 
 <!-- HINT OVERLAY -->
 <div class="hint-overlay" id="hintOverlay">
   <div class="hint-box">
-    <button class="hint-close" id="hintCloseBtn">✕</button>
+    <button class="hint-close" id="hintCloseBtn">×</button>
     <div class="hint-title">Підказка для ведучого</div>
     <div class="hint-text" id="hintText"></div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 
 <script>
 // ===== ПИТАННЯ =====
@@ -381,10 +660,18 @@ var questionsCommon = [
     hint: "Питання про об'єктивну мораль. Якщо добро і зло реальні — звідки вони? Це відкриває розмову про Бога як джерело моральності."
   },
   {
-    q: "ЧИ ІСНУЄ ЩОСЬ (ХТОСЬ) БІЛЬШЕ ЗА НАС?",
+    q: "ЧИ ІСНУЄ ЩОСЬ АБО ХТОСЬ БІЛЬШЕ ЗА НАС?",
     type: "radio",
-    options: ["Ні", "Не впевнений/а", "Так, це безособистісна Сила/Енергія/Всесвіт", "Так, це боги / вищі істоти", "Так, це Бог"],
-    hint: "Ключове розгалуження тесту. 'Так, це Бог' → гілка теїста. Всі інші відповіді → гілка скептика."
+    options: [
+      "Ні",
+      "Не впевнений/а",
+      "Мені це не дуже цікаво",
+      "Так, це безособистісна Сила/Енергія/Всесвіт",
+      "Так, це боги / вищі істоти",
+      "Так, це особистий Бог",
+      "Так, це Бог Біблії"
+    ],
+    hint: "Ключове розгалуження тесту. 'Особистий Бог' або 'Бог Біблії' веде до гілки теїста. Інші відповіді ведуть до гілки скептика."
   }
 ];
 
@@ -392,7 +679,14 @@ var questionsTheist = [
   {
     q: "ЯК БИ ВИ ОПИСАЛИ БОГА?",
     type: "radio",
-    options: ["Люблячий", "Святий", "Безособистісна Енергія", "Байдужий"],
+    options: [
+      "Люблячий",
+      "Святий",
+      "Особистий і близький",
+      "Далекий / не втручається",
+      "Безособистісна Енергія",
+      "Байдужий"
+    ],
     custom: "Ваш варіант",
     hint: "Розкриває уявлення людини про природу Бога. Допомагає зрозуміти, з якого кута підходити до розмови про Євангеліє."
   },
@@ -453,7 +747,7 @@ var questionsSkeptic = [
     type: "radio",
     options: ["Завжди існувало", "Створило само себе", "Закони фізики", "Не маю поняття"],
     custom: "Ваша версія",
-    hint: "Питання про першопричину. Жодна з атеїстичних відповідей не є задовільною — відкриває простір для розмови про Творця."
+    hint: "Питання про першопричину. Воно відкриває простір для розмови про походження Всесвіту, причинність і Творця."
   },
   {
     q: "ЧИ ВИ БАЧИТЕ ЯКУСЬ ЦІЛЬ ЧИ ЗНАЧЕННЯ В ІСНУВАННІ ВСЕСВІТУ?",
@@ -466,129 +760,139 @@ var questionsSkeptic = [
     type: "radio",
     options: ["Випадковість", "Закони природи", "Позаземне походження", "Не впевнений/а"],
     custom: "Ваш варіант",
-    hint: "Навіть 'позаземне походження' лише відсуває проблему — хто створив позаземне життя?"
+    hint: "Навіть 'позаземне походження' лише відсуває питання походження життя. Це може відкрити розмову про першопричину."
   },
   {
     q: "НА ЧОМУ БАЗУЄТЬСЯ ВАША МОРАЛЬНІСТЬ?",
     type: "radio",
     options: ["Ні на чому", "Соціальні норми", "Еволюція", "Почуття"],
     custom: "Ваш варіант",
-    hint: "Якщо мораль — лише еволюція або почуття, вона відносна. Але люди поводяться так, ніби мораль абсолютна. Звідки це?"
+    hint: "Якщо мораль — лише еволюція, соціальні норми або почуття, вона відносна. Але люди часто поводяться так, ніби мораль має реальну вагу."
   },
   {
     q: "ЧИ ЛЮДСЬКЕ ЖИТТЯ Є ОСОБЛИВІШИМ ЗА ЖИТТЯ РОСЛИН ЧИ ТВАРИН?",
     type: "radio",
     options: ["Так", "Ні", "Не впевнений/а"],
-    hint: "Якщо так — чому? З еволюційної точки зору ми просто складніші тварини. Особливість людини вказує на образ Божий (Бут. 1:27)."
+    hint: "Якщо так — чому? Особлива цінність людини відкриває розмову про гідність, образ Божий і основу прав людини."
   },
   {
-    q: "НА СКІЛЬКИ ВИ ПЕРЕКОНАНІ, ЩО БОГА НЕ ІСНУЄ?",
+    q: "НА СКІЛЬКИ ВИ ПЕРЕКОНАНІ, ЩО ОСОБИСТОГО БОГА-ТВОРЦЯ НЕ ІСНУЄ?",
     type: "scale",
-    hint: "Шкала показує ступінь переконаності. Більшість скептиків — агностики, а не атеїсти. Це відкриває розмову про можливість Бога."
+    hint: "Шкала показує ступінь переконаності. Багато скептиків є радше агностиками, ніж переконаними атеїстами. Це відкриває розмову про можливість Бога."
   },
   {
-    q: "ЧИ ХОТІЛИ Б ВИ ПОЧУТИ, ЯК ТЕЇСТИ ВІДПОВІДАЮТЬ НА ЦІ ЗАПИТАННЯ?",
+    q: "ЧИ ХОТІЛИ Б ВИ ПОЧУТИ, ЯК ХРИСТИЯНСЬКИЙ ТЕЇЗМ ВІДПОВІДАЄ НА ЦІ ЗАПИТАННЯ?",
     type: "radio",
     options: ["Так", "Ні"],
-    hint: "Фінальне питання. Якщо 'Так' — чудова можливість поділитись своєю вірою або запросити на розмову."
+    hint: "Фінальне питання. Якщо 'Так' — чудова можливість поділитись християнським поглядом або запросити на розмову."
   }
 ];
 
-// ===== 13 ПРОФІЛІВ =====
+// ===== 12 ПРОФІЛІВ БЕЗ ЕМОДЗІ ТА БЕЗ БІБЛІЙНИХ ВІРШІВ =====
 var profiles = {
-  // ТЕЇСТИ
   "christian": {
-    emoji: "✝️",
     title: "ХРИСТИЯНСЬКИЙ ТЕЇСТ",
-    desc: "Ви вірите в особистого Бога, який діє в історії через Ісуса Христа.",
-    verse: "Бо так полюбив Бог світ, що дав Сина Свого Єдинородного, щоб кожен, хто вірує в Нього, не загинув, але мав вічне життя.",
-    ref: "Іван 3:16"
+    shortTitle: "Християнський теїзм",
+    desc: "Ваші відповіді найближчі до християнського теїзму: віри в особистого Бога, Який відкрився через Ісуса Христа."
   },
+
+  "theist": {
+    title: "ТЕЇСТ",
+    shortTitle: "Теїзм",
+    desc: "Ваші відповіді найближчі до теїзму: віри в особистого Бога, Який є вищим за світ і може мати стосунок до людини."
+  },
+
   "deist": {
-    emoji: "☀️",
     title: "ДЕЇСТ",
-    desc: "Ви вірите, що Бог створив світ, але не втручається в його справи.",
-    verse: "На початку Бог створив небо і землю.",
-    ref: "Буття 1:1"
+    shortTitle: "Деїзм",
+    desc: "Ваші відповіді близькі до деїзму: віри в Бога-Творця, Який створив світ, але здається далеким або не втручається в щоденне життя."
   },
-  "panentheist": {
-    emoji: "🌐",
-    title: "ПАНЕНТЕЇСТ",
-    desc: "Ви відчуваєте Бога як присутнього в усьому, але більшого за всесвіт.",
-    verse: "Бо ми Ним живемо, і рухаємось, і існуємо.",
-    ref: "Дії 17:28"
-  },
+
   "pantheist": {
-    emoji: "🌀",
-    title: "ПАНТЕЇСТ",
-    desc: "Для вас Бог і всесвіт — одне ціле. Бог є всім, що існує.",
-    verse: "Небеса розповідають про славу Божу, і про діла рук Його сповіщає твердь.",
-    ref: "Псалом 19:1"
+    title: "ПАНТЕЇСТИЧНИЙ ПРОФІЛЬ",
+    shortTitle: "Пантеїстичний",
+    desc: "Ваші відповіді близькі до погляду, що Божественне тісно пов'язане зі світом: присутнє в усьому або ототожнюється з Всесвітом."
   },
-  // СКЕПТИКИ
+
   "relativist": {
-    emoji: "🔄",
     title: "РЕЛЯТИВІСТ",
-    desc: "Для вас істина відносна — кожен має свою правду.",
-    verse: "Ісус сказав: Я є дорога, і правда, і життя.",
-    ref: "Іван 14:6"
+    shortTitle: "Релятивізм",
+    desc: "Ваші відповіді близькі до релятивізму: погляду, що істина або мораль значною мірою залежать від людини, культури чи обставин."
   },
-  "existentialist": {
-    emoji: "💭",
-    title: "ЕКЗИСТЕНЦІАЛІСТ",
-    desc: "Ви шукаєте сенс через особистий вибір і відповідальність.",
-    verse: "Шукайте і знайдете; стукайте і відчинять вам.",
-    ref: "Матвія 7:7"
-  },
+
   "nihilist": {
-    emoji: "🔥",
     title: "НІГІЛІСТ",
-    desc: "Ви вважаєте, що об'єктивного сенсу чи моралі не існує.",
-    verse: "Суєта суєт, — сказав Проповідник, — суєта суєт, все суєта!",
-    ref: "Екклезіаст 1:2"
+    shortTitle: "Нігілізм",
+    desc: "Ваші відповіді близькі до нігілізму: погляду, що об'єктивного сенсу, мети або моральної основи не існує."
   },
+
   "naturalist": {
-    emoji: "🌲",
     title: "НАТУРАЛІСТ",
-    desc: "Для вас реальне лише те, що можна пояснити природними законами.",
-    verse: "Бо невидиме Його, вічна сила Його і Божество, від створення світу через розгляд творінь стають видимими.",
-    ref: "Римлян 1:20"
+    shortTitle: "Натуралізм",
+    desc: "Ваші відповіді близькі до натуралізму: погляду, що світ найкраще пояснюється природними законами без звернення до надприродного."
   },
+
   "humanist": {
-    emoji: "🌿",
     title: "ГУМАНІСТ",
-    desc: "Ви вірите в людину як найвищу цінність і джерело моралі.",
-    verse: "Що є людина, що Ти пам'ятаєш про неї, і що є син людський, що Ти відвідуєш його?",
-    ref: "Псалом 8:4"
+    shortTitle: "Гуманізм",
+    desc: "Ваші відповіді близькі до гуманізму: погляду, який підкреслює гідність людини, співчуття, справедливість і людську відповідальність."
   },
+
   "atheist": {
-    emoji: "⚡",
     title: "АТЕЇСТ",
-    desc: "Ви переконані, що Бога не існує, і живете згідно з цим.",
-    verse: "Сказав безумець у серці своєму: немає Бога.",
-    ref: "Псалом 14:1"
+    shortTitle: "Атеїзм",
+    desc: "Ваші відповіді близькі до атеїзму: позиції, що немає достатніх підстав вірити в існування Бога."
   },
+
   "agnostic": {
-    emoji: "🌫️",
     title: "АГНОСТИК",
-    desc: "Ви не знаєте, чи існує Бог, і вважаєте це питання відкритим.",
-    verse: "Шукайте Господа, поки Він може бути знайдений, кличте до Нього, поки Він близько.",
-    ref: "Ісая 55:6"
+    shortTitle: "Агностицизм",
+    desc: "Ваші відповіді близькі до агностицизму: позиції, що питання існування Бога залишається відкритим або невизначеним."
   },
+
   "polytheist": {
-    emoji: "👑",
     title: "ПОЛІТЕЇСТ",
-    desc: "Ви вірите в існування багатьох богів або вищих істот.",
-    verse: "Господь, Бог наш, Господь один є.",
-    ref: "Повторення Закону 6:4"
+    shortTitle: "Політеїзм",
+    desc: "Ваші відповіді близькі до політеїзму: віри в багатьох богів, духовних істот або вищих сил."
   },
+
   "apatheist": {
-    emoji: "😶",
     title: "АПАТЕЇСТ",
-    desc: "Питання про Бога вас просто не цікавить.",
-    verse: "Ось, стою біля дверей і стукаю: якщо хто почує голос Мій і відчинить двері, увійду до нього.",
-    ref: "Об'явлення 3:20"
+    shortTitle: "Апатеїзм",
+    desc: "Ваші відповіді близькі до апатеїзму: позиції, коли питання про Бога не заперечується обов'язково, але не є важливим для життя."
   }
+};
+
+var profileOrder = [
+  "atheist",
+  "agnostic",
+  "apatheist",
+  "nihilist",
+  "naturalist",
+  "humanist",
+  "relativist",
+  "pantheist",
+  "polytheist",
+  "deist",
+  "theist",
+  "christian"
+];
+
+// Тимчасова локальна демо-статистика.
+// Пізніше замінимо на дані з Google Sheets.
+var demoStats = {
+  "atheist": 8,
+  "agnostic": 14,
+  "apatheist": 6,
+  "nihilist": 3,
+  "naturalist": 9,
+  "humanist": 16,
+  "relativist": 7,
+  "pantheist": 10,
+  "polytheist": 2,
+  "deist": 8,
+  "theist": 9,
+  "christian": 5
 };
 
 // ===== СТАН =====
@@ -604,10 +908,23 @@ var totalQuestions = 10;
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("btnStart").addEventListener("click", startTest);
   document.getElementById("btnNext").addEventListener("click", nextQuestion);
-  document.getElementById("btnRestart").addEventListener("click", restartTest);
+
+  var restartBtn = document.getElementById("btnRestart");
+  if (restartBtn) restartBtn.addEventListener("click", restartTest);
+
   document.getElementById("hintCloseBtn").addEventListener("click", closeHintBtn);
   document.getElementById("hintOverlay").addEventListener("click", function(e) {
     if (e.target === this) closeHintBtn();
+  });
+
+  document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("btn-answer-yes")) {
+      alert("Чудово. Попросіть ведучого коротко показати християнську відповідь на ці питання.");
+    }
+
+    if (e.target.classList.contains("btn-answer-no")) {
+      alert("Без проблем. Ви можете зберегти результат через QR-код і переглянути його пізніше.");
+    }
   });
 });
 
@@ -664,7 +981,7 @@ function renderCurrent() {
       var cVal = (savedAns && savedAns.custom) ? savedAns.custom : "";
       var cChk = (savedAns && savedAns.value === "__custom__") ? " checked" : "";
       html += "<label class=\"q-option\"><input type=\"radio\" name=\"qr\" value=\"__custom__\"" + cChk + "> " +
-        "<input class=\"q-custom-input\" id=\"customInput\" type=\"text\" placeholder=\"" + q.custom + "\" value=\"" + cVal + "\"></label>";
+        "<input class=\"q-custom-input\" id=\"customInput\" type=\"text\" placeholder=\"" + q.custom + "\" value=\"" + cVal.replace(/"/g,"&quot;") + "\"></label>";
     }
     html += "</div>";
   } else if (q.type === "scale") {
@@ -682,12 +999,10 @@ function renderCurrent() {
   html += "<textarea class=\"q-notes\" placeholder=\"Нотатки ведучого...\">" + savedNotes + "</textarea>";
   body.innerHTML = html;
 
-  // Прив'язуємо підказку
   document.getElementById("hintBtn").addEventListener("click", function() {
     showHint(q.hint);
   });
 
-  // Прив'язуємо шкалу
   var scaleBtns = body.querySelectorAll(".scale-btn");
   for (var k = 0; k < scaleBtns.length; k++) {
     scaleBtns[k].addEventListener("click", function() {
@@ -724,7 +1039,11 @@ function nextQuestion() {
       var ans2 = commonAnswers[1];
       var val = ans2 ? ans2.value : "";
 
-      if (val === "Так, це Бог") {
+      if (
+        val === "Так, це особистий Бог" ||
+        val === "Так, це Бог Біблії" ||
+        val === "Так, це Бог"
+      ) {
         phase = "theist";
         branchQuestions = questionsTheist;
       } else {
@@ -756,6 +1075,7 @@ function saveCurrentAnswer() {
   var notesEl = document.querySelector(".q-notes");
   var notes = notesEl ? notesEl.value : "";
   var ans;
+
   if (q.type === "radio") {
     var sel = document.querySelector("input[name=\"qr\"]:checked");
     var ci = document.getElementById("customInput");
@@ -764,6 +1084,7 @@ function saveCurrentAnswer() {
     var sb = document.querySelector(".scale-btn.selected");
     ans = { value: sb ? sb.dataset.val : null, notes: notes };
   }
+
   if (phase === "common") commonAnswers[commonIdx] = ans;
   else branchAnswers[branchIdx] = ans;
 }
@@ -779,89 +1100,215 @@ function closeHintBtn() {
 
 // ===== АЛГОРИТМ ПРОФІЛІВ =====
 function determineProfile() {
-  if (phase === "theist") {
-    // Пит. 8 (branchIdx 7) — остання відповідь
-    var ans8 = branchAnswers[7] ? branchAnswers[7].value : "";
-    // Пит. 7 (branchIdx 6) — чому потрапите в рай
-    var ans7 = branchAnswers[6] ? branchAnswers[6].value : "";
-    // Пит. 3 (branchIdx 2) — шкала задоволення вимог
-    var ans3val = branchAnswers[2] ? parseInt(branchAnswers[2].value) : 5;
+  var c0 = commonAnswers[0] ? commonAnswers[0].value : "";
+  var c1 = commonAnswers[1] ? commonAnswers[1].value : "";
 
-    // Пріоритет: Пит.8 найвищий
-    if (ans8 === "Знаю і погоджуюсь" || ans7 === "Бог спас мене через Христа") {
+  if (phase === "theist") {
+    var godDesc = branchAnswers[0] ? branchAnswers[0].value : "";
+    var godExpect = branchAnswers[1] ? branchAnswers[1].value : "";
+    var heaven = branchAnswers[3] ? branchAnswers[3].value : "";
+    var whyHeaven = branchAnswers[6] ? branchAnswers[6].value : "";
+    var bibleAnswer = branchAnswers[7] ? branchAnswers[7].value : "";
+
+    if (
+      c1 === "Так, це Бог Біблії" ||
+      whyHeaven === "Бог спас мене через Христа" ||
+      bibleAnswer === "Знаю і погоджуюсь"
+    ) {
       return "christian";
     }
-    if (ans8 === "Хотів/ла би довідатись" || ans8 === "Знаю і не погоджуюсь") {
-      // Перевіряємо чи деїст
-      var ans1 = branchAnswers[0] ? branchAnswers[0].value : "";
-      if (ans1 === "Байдужий") return "deist";
-      return "panentheist";
+
+    if (
+      godDesc === "Безособистісна Енергія" ||
+      heaven === "Вірю в реінкарнацію"
+    ) {
+      return "pantheist";
     }
-    // Якщо "Не цікаво"
-    var ans1b = branchAnswers[0] ? branchAnswers[0].value : "";
-    if (ans1b === "Безособистісна Енергія") return "pantheist";
-    if (ans1b === "Байдужий") return "deist";
-    return "panentheist";
+
+    if (
+      godDesc === "Далекий / не втручається" ||
+      godDesc === "Байдужий" ||
+      godExpect === "Нічого"
+    ) {
+      return "deist";
+    }
+
+    return "theist";
 
   } else {
-    // ГІЛКА СКЕПТИКА
-    // Пит. 3 (branchIdx 0) — що заважає вірити
-    var s0 = branchAnswers[0] ? branchAnswers[0].value : "";
-    // Пит. 7 (branchIdx 6) — шкала переконаності (1-10)
+    var obstacle = branchAnswers[0] ? branchAnswers[0].value : "";
+    var origin = branchAnswers[1] ? branchAnswers[1].value : "";
+    var purpose = branchAnswers[2] ? branchAnswers[2].value : "";
+    var lifeOrigin = branchAnswers[3] ? branchAnswers[3].value : "";
+    var morality = branchAnswers[4] ? branchAnswers[4].value : "";
+    var humanSpecial = branchAnswers[5] ? branchAnswers[5].value : "";
     var scaleVal = branchAnswers[6] ? parseInt(branchAnswers[6].value) : 5;
-    // Пит. 8 (branchIdx 7) — чи хотіли б почути теїстів
-    var s7 = branchAnswers[7] ? branchAnswers[7].value : "";
-    // Пит. 1 (commonAnswers[0]) — добро і зло
-    var c0 = commonAnswers[0] ? commonAnswers[0].value : "";
-    // Пит. 5 (branchIdx 4) — мораль
-    var s4 = branchAnswers[4] ? branchAnswers[4].value : "";
-    // Пит. 3 (branchIdx 2) — ціль всесвіту
-    var s2 = branchAnswers[2] ? branchAnswers[2].value : "";
-    // Пит. 6 (branchIdx 5) — людське життя особливе?
-    var s5 = branchAnswers[5] ? branchAnswers[5].value : "";
+    var wantHear = branchAnswers[7] ? branchAnswers[7].value : "";
 
-    // Пріоритет 1: Політеїст
-    if (s0 === "Вірю в багатьох богів, а не одного") return "polytheist";
+    if (
+      c1 === "Так, це боги / вищі істоти" ||
+      obstacle === "Вірю в багатьох богів, а не одного"
+    ) {
+      return "polytheist";
+    }
 
-    // Пріоритет 2: Апатеїст — байдужість до питання
-    if (s7 === "Ні" && c0 === "Не впевнений/а" && s2 === "Ні") return "apatheist";
+    if (
+      c1 === "Так, це безособистісна Сила/Енергія/Всесвіт"
+    ) {
+      return "pantheist";
+    }
 
-    // Пріоритет 3: Атеїст — висока переконаність (8-10)
-    if (scaleVal >= 8) return "atheist";
+    if (
+      c1 === "Мені це не дуже цікаво" ||
+      (wantHear === "Ні" && purpose === "Ні" && c0 === "Не впевнений/а")
+    ) {
+      return "apatheist";
+    }
 
-    // Пріоритет 4: Агностик — низька переконаність (1-4)
-    if (scaleVal <= 4) return "agnostic";
+    if (
+      morality === "Ні на чому" &&
+      purpose === "Ні" &&
+      humanSpecial === "Ні"
+    ) {
+      return "nihilist";
+    }
 
-    // Пріоритет 5: Нігіліст
-    if (s4 === "Ні на чому" && s2 === "Ні" && s5 === "Ні") return "nihilist";
+    if (
+      c1 === "Ні" &&
+      scaleVal >= 8
+    ) {
+      return "atheist";
+    }
 
-    // Пріоритет 6: Релятивіст
-    if (c0 === "Ні, це просто суспільні домовленості" && s4 === "Соціальні норми") return "relativist";
+    if (
+      c1 === "Не впевнений/а" ||
+      scaleVal <= 4
+    ) {
+      return "agnostic";
+    }
 
-    // Пріоритет 7: Натураліст
-    if (s4 === "Еволюція" || s4 === "Соціальні норми") return "naturalist";
+    if (
+      c0 === "Ні, це просто суспільні домовленості" ||
+      morality === "Соціальні норми" ||
+      morality === "Почуття"
+    ) {
+      return "relativist";
+    }
 
-    // Пріоритет 8: Гуманіст
-    if (s5 === "Так" && s7 === "Так") return "humanist";
+    if (
+      origin === "Закони фізики" ||
+      lifeOrigin === "Закони природи" ||
+      morality === "Еволюція"
+    ) {
+      return "naturalist";
+    }
 
-    // Пріоритет 9: Екзистенціаліст
-    if (s2 === "Так") return "existentialist";
+    if (
+      humanSpecial === "Так" ||
+      c0 === "Так, є об'єктивне добро і зло"
+    ) {
+      return "humanist";
+    }
 
-    // За замовчуванням
     if (scaleVal >= 6) return "atheist";
     return "agnostic";
+  }
+}
+
+function renderProfileMap(activeKey) {
+  var grid = document.getElementById("profileMapGrid");
+  if (!grid) return;
+
+  var maxCount = 1;
+  for (var i = 0; i < profileOrder.length; i++) {
+    var count = demoStats[profileOrder[i]] || 0;
+    if (count > maxCount) maxCount = count;
+  }
+
+  var html = "";
+
+  for (var j = 0; j < profileOrder.length; j++) {
+    var key = profileOrder[j];
+    var p = profiles[key];
+    var countVal = demoStats[key] || 0;
+    var percentWidth = Math.round((countVal / maxCount) * 100);
+    var activeClass = key === activeKey ? " active" : "";
+
+    html +=
+      "<div class=\"profile-map-card" + activeClass + "\">" +
+        "<div class=\"profile-map-name\">" + p.shortTitle + "</div>" +
+        "<div>" +
+          "<div class=\"profile-map-count\">" + countVal + " людей</div>" +
+          "<div class=\"profile-map-bar\"><span style=\"width:" + percentWidth + "%\"></span></div>" +
+        "</div>" +
+      "</div>";
+  }
+
+  grid.innerHTML = html;
+}
+
+function generateProfileQr(profileKey) {
+  var qrEl = document.getElementById("qrCode");
+  var linkEl = document.getElementById("profileLink");
+
+  if (!qrEl || !linkEl) return;
+
+  qrEl.innerHTML = "";
+
+  var baseUrl = window.location.href.split("#")[0].split("?")[0];
+  var folderUrl = baseUrl.substring(0, baseUrl.lastIndexOf("/") + 1);
+  var resultUrl = folderUrl + "result.html?profile=" + encodeURIComponent(profileKey);
+
+  linkEl.textContent = resultUrl;
+
+  if (typeof QRCode !== "undefined") {
+    new QRCode(qrEl, {
+      text: resultUrl,
+      width: 150,
+      height: 150,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  } else {
+    qrEl.innerHTML = "<div style=\"color:#aaa;font-size:13px;\">QR-код недоступний. Скопіюйте посилання нижче.</div>";
   }
 }
 
 function showResult() {
   var key = determineProfile();
   var p = profiles[key];
+
   showScreen("result-screen");
-  document.getElementById("resultEmoji").textContent = p.emoji;
+
   document.getElementById("resultTitle").textContent = p.title;
   document.getElementById("resultDesc").textContent = p.desc;
-  document.getElementById("resultVerse").textContent = p.verse;
-  document.getElementById("resultRef").textContent = p.ref;
+
+  renderProfileMap(key);
+
+  var countVal = demoStats[key] || 0;
+  var total = 0;
+  for (var i = 0; i < profileOrder.length; i++) {
+    total += demoStats[profileOrder[i]] || 0;
+  }
+
+  var percent = total > 0 ? Math.round((countVal / total) * 100) : 0;
+
+  document.getElementById("youAreHere").innerHTML =
+    "Ваш профіль: <strong>" + p.shortTitle + "</strong><br>" +
+    "У демо-мапі схожий профіль мають приблизно " + percent + "% учасників.";
+
+  var finalQuestion = "";
+
+  if (key === "christian") {
+    finalQuestion = "Хочете побачити короткий біблійний підсумок до цих 10 запитань?";
+  } else {
+    finalQuestion = "Хочете почути, як на ці 10 запитань відповідає християнський теїзм?";
+  }
+
+  document.getElementById("finalQuestionText").textContent = finalQuestion;
+
+  generateProfileQr(key);
 }
 
 function restartTest() {
