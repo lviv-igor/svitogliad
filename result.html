@@ -865,6 +865,15 @@ var churchInfo = {
   }
 
   renderPage();
+ try {
+  renderPage();
+} catch (error) {
+  document.body.innerHTML =
+    "<div style='color:white;background:#111;padding:30px;font-family:Arial'>" +
+    "<h1>Помилка JavaScript</h1>" +
+    "<pre>" + error.message + "</pre>" +
+    "</div>";
+}
 </script>
 </body>
 </html>
